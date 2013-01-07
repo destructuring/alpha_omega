@@ -14,7 +14,6 @@ shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
 
 # load a jason bourne library
 source "$shome/libexec/_jason"
-get_started
 
 function git_branch_head {
   local ver_repo="$1"; shift
