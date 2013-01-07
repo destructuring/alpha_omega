@@ -164,13 +164,13 @@ module AlphaOmega
     config.set :current_pod, $this_pod
     
     this_host = ENV['_AO_THIS_HOST'] || Socket.gethostname.chomp.split(".")[0]
-    dna = YAML.load(File.read("#{node_home}/pods/#{$this_pod}/#{this_host}.yaml"))
+    dna = YAML.load(File.read("#{node_home}/config/pods/#{$this_pod}/#{this_host}.yaml"))
     this_node = self.node_defaults(dna, $this_pod, this_host)
     $this_host = this_node
 
     ((this_node["pods"] || []) + [$this_pod]).inject({}) do |pods, pod_name|
       pods[pod_name] = { 
-        "nodes_specs" => [ "#{node_home}/pods/#{pod_name}/*.yaml" ],
+        "nodes_specs" => [ "#{node_home}/config/pods/#{pod_name}/*.yaml" ],
         "node_suffix" => (pod_name == $this_pod ? "" : ".#{pod_name}")
       }
       yield config, pod_name, pods[pod_name], this_node
