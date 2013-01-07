@@ -13,5 +13,6 @@ gem "newrelic_rpm", "~> 3.3.4"
 gem "flowdock"
 
 gem "microwave"
+gem "opsdb"
 
 # vim: set ft=ruby:
